@@ -1,20 +1,25 @@
 // Class
 class Cube {
   constructor(x, y) {
-    let direction = [0, 1, 2, 3];
+    let directions = [0, 1, 2, 3];
+    this.directions = directions;
     this.x = x;
     this.y = y;
-    this.dir = direction[0];
+    this.dir = directions[0];
 
     // window.addEventListener("keypress", this.rotate);
   }
 
-  moveForwards() {}
+  moveForwards() {
+    console.log(`Move forwards`);
+  }
 
-  moveBackwards() {}
+  moveBackwards() {
+    console.log(`Move backwards`);
+  }
 
   rotate(e) {
-    console.log(parseInt(e.key));
+    console.log(`rotate : ${e}`);
   }
 }
 

@@ -1,56 +1,67 @@
-// import Table from "./js/Table";
-// import Cube from "./js/Cube";
-import messages from "./js/messages";
-import Game from "./js/Game";
+/*
+ * Assumptions made:
+ * The program only reads digits from 0-9 directly on keypress,
+ * instead of letting the user type 2 or more and read it on submit.
+ */
+
+import gameInterface from "./js/gameInterface";
+// import { xyObjectFactory, validateXyObject } from "./js/objectHandler";
+// import messages from "./js/messages";
+// import Game from "./js/Game";
 import "./scss/main.scss";
 
-let index = 0;
-let game;
-let table = { x: false, y: false, set: false };
-let cube = { x: false, y: false, set: false };
+gameInterface();
 
-const playGame = (number, type) => {
-  if (type === "table" && !table.set) {
-    if (!table.x) {
-      table.x = number;
-      console.log(`${type} x-axis set to ${number}`);
-    } else {
-      table.y = number;
-      table.set = true;
-      console.log(`${type} y-axis set to ${number}`);
-    }
-  } else if (type === "cube" && !cube.set) {
-    if (!cube.x) {
-      cube.x = number;
-      console.log(`${type} x-axis set to ${number}`);
-    } else {
-      cube.y = number;
-      cube.set = true;
-      console.log(`${type} y-axis set to ${number}`);
-      console.log("lets play");
-      game = new Game(table, cube);
-      // game = new Game(table.x, table.y, cube.x, cube.y);
-      window.removeEventListener("keypress", handleKeyPress, false);
-      window.addEventListener("keypress", (e) => {
-        game.round(e.key);
-      });
-    }
-  }
-  index++;
-  userGuide(index);
-};
+// let game;
+// let table = xyObjectFactory(false, false);
+// let cube = xyObjectFactory(false, false);
 
-function handleKeyPress(e) {
-  let type = table.set ? "cube" : "table";
-  if (typeof parseInt(e.key) === "number") {
-    playGame(e.key, type);
-  }
-}
-window.addEventListener("keypress", handleKeyPress, false);
+// const playGame = (number, type) => {
+//   if (type === "table" && !validateXyObject(table)) {
+//     if (!table.x) {
+//       table.x = number;
+//       messageUserInConsole(`${type} x-axis set to ${number}`);
+//     } else {
+//       table.y = number;
+//       messageUserInConsole(
+//         `${type} y-axis set to ${number}, now type a number between 0 and ${table.x} for the placement of the cubes x-axis:`
+//       );
+//     }
+//   } else if (type === "cube" && !validateXyObject(cube)) {
+//     if (!cube.x) {
+//       cube.x = number;
+//       messageUserInConsole(
+//         `${type} x-axis set to ${number}, now type a number between 0 and ${table.y} for the placement of the cubes y-axis:`
+//       );
+//     } else {
+//       cube.y = number;
+//       messageUserInConsole(`${type} y-axis set to ${number}`);
+//       console.log("lets play");
+//       game = new Game(table, cube);
+//       window.removeEventListener("keypress", handleKeyPress, false);
+//       window.addEventListener("keypress", (e) => {
+//         game.round(e.key);
+//       });
+//     }
+//   }
+// };
 
-function userGuide(index) {
-  console.log("toggle messages to user here");
-  console.log(messages[index]);
-}
+// function handleKeyPress(e) {
+//   let low = 0;
+//   let high = 9;
+//   let input = parseInt(e.key);
+//   let type = !validateXyObject(table) ? "table" : "cube";
+//   if (typeof input === "number" && input >= low && input <= high) {
+//     playGame(e.key, type);
+//   }
+// }
+// window.addEventListener("keypress", handleKeyPress, false);
 
-userGuide(index);
+// function messageUserInConsole(message) {
+//   const decor = "\n**************************************************\n";
+//   console.log(`${decor}\n${message}\n${decor}`);
+// }
+
+// window.addEventListener("load", () => {
+//   messageUserInConsole(messages[0]);
+// });

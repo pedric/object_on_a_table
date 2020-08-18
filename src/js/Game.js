@@ -13,8 +13,23 @@ export default class Game {
   }
 
   round(number) {
-    console.log(`round of game with ${number},`);
-    console.log(this.table);
-    console.log(this.cube);
+    number = parseInt(number);
+    // console.log(typeof number);
+    // console.log(`round of game with ${number},`);
+    // console.log(this.table);
+    // console.log(this.cube);
+    if (number === 3 || number === 4) {
+      this.cube.rotate(number);
+    } else if (number === 1) {
+      this.cube.moveForwards();
+    } else if (number === 2) {
+      this.cube.moveBackwards();
+    } else if (number === 0) {
+      this.quitGame();
+    }
+  }
+
+  quitGame() {
+    console.log("QUIT");
   }
 }
