@@ -1,4 +1,5 @@
-// Class
+import { logError } from "./formattedOutput";
+
 class Cube {
   constructor(x, y) {
     let directions = [0, 1, 2, 3];
@@ -6,35 +7,62 @@ class Cube {
     this.x = x;
     this.y = y;
     this.dir = directions[0];
-
-    // window.addEventListener("keypress", this.rotate);
   }
 
   moveForwards() {
-    console.log(`Move forwards`);
+    switch (this.dir) {
+      case 0: {
+        this.y = this.y - 1;
+        break;
+      }
+      case 1: {
+        this.x = this.x + 1;
+        break;
+      }
+      case 3: {
+        this.y = this.y + 1;
+        break;
+      }
+      case 4: {
+        this.x = this.x - 1;
+        break;
+      }
+      default:
+        logError(`Unknown error. Couldn't move forward, try again.`);
+    }
   }
 
   moveBackwards() {
-    console.log(`Move backwards`);
+    switch (this.dir) {
+      case 0: {
+        this.y = this.y + 1;
+        break;
+      }
+      case 1: {
+        this.x = this.x - 1;
+        break;
+      }
+      case 3: {
+        this.y = this.y - 1;
+        break;
+      }
+      case 4: {
+        this.x = this.x + 1;
+        break;
+      }
+      default:
+        logError(`Unknown error. Couldn't move forward, try again.`);
+    }
   }
 
-  rotate(e) {
-    console.log(`rotate : ${e}`);
+  rotate(input) {
+    if (input === 3) {
+      this.dir = this.dir >= this.directions.length ? 0 : this.dir + 1;
+    }
+    if (input === 4) {
+      this.dir = this.dir <= 0 ? this.directions.length : this.dir - 1;
+    }
   }
 }
-
-// factory function
-// function Cube(x, y) {
-//   return {
-//     x,
-//     y,
-//   };
-// }
-
-// Constructor function
-// function Cube(x, y) {
-//   this.x = x;
-//   this.y = y;
-// }
 
 export default Cube;

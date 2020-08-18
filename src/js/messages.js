@@ -1,5 +1,5 @@
 const messages = {
-  welcome: `Welcome. You are about to create a table with 2 digits, then place an object on that table with 2 more digits.\nTo start, type a number for the table's X-axis:`,
+  welcome: `Welcome. You are about to create a table with 2 digits, then place an object on that table with 2 more digits.\nMake sure to have focus on the browser window.\nTo start, type a number for the table's X-axis:`,
   defaultError: `Invalid input, try again`,
   rules: `\n
   The rules are as follows:\n

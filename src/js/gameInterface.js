@@ -40,7 +40,7 @@ export default function gameInterface() {
     let input = parseInt(e.key);
     let type = !validateXyObject(table) ? "table" : "cube";
     if (validateKeyPress(input, type)) {
-      playGame(e.key, type);
+      playGame(input, type);
     } else {
       logError(
         `Invalid input, try again.\nYou probably try to place the cube outside of the table which is ${table.x} by ${table.y}\nor try to enter a charachter whics is not a number.`
@@ -67,7 +67,8 @@ export default function gameInterface() {
     game = new Game(table, cube);
     window.removeEventListener("keypress", handleKeyPress, false);
     window.addEventListener("keypress", (e) => {
-      game.round(e.key);
+      console.log(`input: ${parseInt(e.key)}`);
+      game.round(parseInt(e.key));
     });
   }
 
